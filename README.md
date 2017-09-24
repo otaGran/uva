@@ -1,4 +1,4 @@
-# An AC a day，keep the girls away！
+# putty has no tree, MinGW is not a platform
 Some solutions are still incorrect.
 
 
