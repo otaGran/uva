@@ -2,4 +2,4 @@
 Some solutions are still incorrect.
 
 
-My UVA stats: http://uhunt.felix-halim.net/id/870825
+My UVa stats: http://uhunt.felix-halim.net/id/870825
