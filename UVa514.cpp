@@ -10,8 +10,6 @@ using namespace std;
 int ok = 1,a = 1,b = 1,n;
 int target[10000];
 stack<int> s;
-
-
 int main() {
     while (cin >> n) {
         //cout << n << endl;

@@ -1,4 +1,4 @@
-//
+//double判断整数精度控制1e-10
 // Created by beans on 2017/9/24.
 //
 
