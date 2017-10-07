@@ -1,0 +1,162 @@
+<html>
+<head>
+<title>print.cpp</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #999999; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(128,128,128); font-style: italic; }
+.s1 { color: rgb(0,0,0); }
+.s2 { color: rgb(128,128,0); }
+.s3 { color: rgb(0,128,0); font-weight: bold; }
+.s4 { color: rgb(0,0,128); font-weight: bold; }
+.s5 { color: rgb(0,0,255); }
+.s6 { color: rgb(0,0,0); }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+print.cpp</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">//</span><span class="s1"> 
+</span><span class="s0">// Created by beans on 2017/5/5.</span><span class="s1"> 
+</span><span class="s0">//</span><span class="s1"> 
+</span><span class="s2">#include</span><span class="s3">&lt;cstdio&gt; </span><span class="s1">#include&lt;cstring&gt; 
+ 
+</span><span class="s4">const int </span><span class="s1">maxn = </span><span class="s5">100 </span><span class="s1">+ </span><span class="s5">5</span><span class="s1">; 
+</span><span class="s4">char </span><span class="s1">pic[maxn][maxn]; 
+</span><span class="s4">int </span><span class="s1">m, n, idx[maxn][maxn]; 
+ 
+</span><span class="s4">void </span><span class="s1">dfs(</span><span class="s4">int </span><span class="s1">r, </span><span class="s4">int </span><span class="s1">c, </span><span class="s4">int </span><span class="s1">id) { 
+    </span><span class="s4">if </span><span class="s1">(r &lt; </span><span class="s5">0 </span><span class="s1">|| r &gt;= m || c &lt; </span><span class="s5">0 </span><span class="s1">|| c &gt;= n) 
+        </span><span class="s4">return</span><span class="s1">; </span><span class="s0">//&quot;  &quot;    if(idx[r][c] &gt; 0 || pic[r][c] != '@') return; //  &quot;@&quot;           idx[r][c] = id; //</span><span class="s1"> 
+    </span><span class="s4">for </span><span class="s1">(</span><span class="s4">int </span><span class="s1">dr = -</span><span class="s5">1</span><span class="s1">; dr &lt;= </span><span class="s5">1</span><span class="s1">; dr++) 
+        </span><span class="s4">for </span><span class="s1">(</span><span class="s4">int </span><span class="s1">dc = -</span><span class="s5">1</span><span class="s1">; dc &lt;= </span><span class="s5">1</span><span class="s1">; dc++) 
+            </span><span class="s4">if </span><span class="s1">(dr != </span><span class="s5">0 </span><span class="s1">|| dc != </span><span class="s5">0</span><span class="s1">) dfs(r + dr, c + dc, id); 
+} 
+ 
+</span><span class="s4">int </span><span class="s1">main() { 
+    </span><span class="s4">while </span><span class="s1">(scanf(</span><span class="s3">&quot;%d%d&quot;</span><span class="s1">, &amp;m, &amp;n) == </span><span class="s5">2 </span><span class="s1">&amp;&amp; m &amp;&amp; n) { 
+        </span><span class="s4">for </span><span class="s1">(</span><span class="s4">int </span><span class="s1">i = </span><span class="s5">0</span><span class="s1">; i &lt; m; i++) scanf(</span><span class="s3">&quot;%s&quot;</span><span class="s1">, pic[i]); 
+        memset(idx, </span><span class="s5">0</span><span class="s1">, </span><span class="s4">sizeof</span><span class="s1">(idx)); 
+        </span><span class="s4">int </span><span class="s1">cnt = </span><span class="s5">0</span><span class="s1">; 
+        </span><span class="s4">for </span><span class="s1">(</span><span class="s4">int </span><span class="s1">i = </span><span class="s5">0</span><span class="s1">; i &lt; m; i++) 
+            </span><span class="s4">for </span><span class="s1">(</span><span class="s4">int </span><span class="s1">j = </span><span class="s5">0</span><span class="s1">; j &lt; n; j++) 
+                </span><span class="s4">if </span><span class="s1">(idx[i][j] == </span><span class="s5">0 </span><span class="s1">&amp;&amp; pic[i][j] == </span><span class="s3">'@'</span><span class="s1">) dfs(i, j, ++cnt); 
+        printf(</span><span class="s3">&quot;%d</span><span class="s4">\n</span><span class="s3">&quot;</span><span class="s1">, cnt); 
+    } 
+    </span><span class="s4">return </span><span class="s5">0</span><span class="s1">; 
+} 
+ 
+</span><span class="s4">int </span><span class="s1">c[maxn]; 
+</span><span class="s4">int </span><span class="s1">topo[maxn], t; 
+ 
+</span><span class="s4">bool </span><span class="s1">dfs(</span><span class="s4">int </span><span class="s1">u) { 
+    c[u] = -</span><span class="s5">1</span><span class="s1">; </span><span class="s0">//</span><span class="s1"> 
+    </span><span class="s4">for </span><span class="s1">(</span><span class="s4">int </span><span class="s1">v = </span><span class="s5">0</span><span class="s1">; v &lt; n; v++) 
+        </span><span class="s4">if </span><span class="s1">(G[u][v]) { 
+            </span><span class="s4">if </span><span class="s1">(c[v] &lt; </span><span class="s5">0</span><span class="s1">) </span><span class="s4">return false</span><span class="s1">; </span><span class="s0">//</span><span class="s1"> 
+            </span><span class="s4">else if </span><span class="s1">(!c[v] &amp;&amp; !dfs(v)) </span><span class="s4">return false</span><span class="s1">; 
+        } 
+    c[u] = </span><span class="s5">1</span><span class="s1">; 
+    topo[</span><span class="s6">——</span><span class="s1">t]=u; 
+    </span><span class="s4">return true</span><span class="s1">; 
+} 
+ 
+</span><span class="s4">bool </span><span class="s1">toposort() { 
+    t = n; 
+    memset(c, </span><span class="s5">0</span><span class="s1">, </span><span class="s4">sizeof</span><span class="s1">(c)); 
+    </span><span class="s4">for </span><span class="s1">(</span><span class="s4">int </span><span class="s1">u = </span><span class="s5">0</span><span class="s1">; u &lt; n; u++) 
+        </span><span class="s4">if </span><span class="s1">(!c[u]) 
+            </span><span class="s4">if </span><span class="s1">(!dfs(u)) </span><span class="s4">return false</span><span class="s1">; 
+    </span><span class="s4">return true</span><span class="s1">; 
+} 
+ 
+</span><span class="s4">void </span><span class="s1">euler(</span><span class="s4">int </span><span class="s1">u) { 
+    </span><span class="s4">for </span><span class="s1">(</span><span class="s4">int </span><span class="s1">v = </span><span class="s5">0</span><span class="s1">; v &lt; n; v++) 
+        </span><span class="s4">if </span><span class="s1">(G[u][v] &amp;&amp; !vis[u][v]) { 
+            vis[u][v] = vis[v][u] = </span><span class="s5">1</span><span class="s1">; 
+            euler(v); 
+            printf(</span><span class="s3">&quot;%d %d</span><span class="s4">\n</span><span class="s3">&quot;</span><span class="s1">, u, v); 
+        } 
+} 
+ 
+</span><span class="s2">#include</span><span class="s3">&lt;cstdio&gt;</span><span class="s1"> 
+</span><span class="s2">#include</span><span class="s3">&lt;algorithm&gt; </span><span class="s0">//  next_permutation using namespace std;</span><span class="s1"> 
+ 
+</span><span class="s4">int </span><span class="s1">main() { 
+    </span><span class="s4">int </span><span class="s1">n, p[</span><span class="s5">10</span><span class="s1">]; 
+    scanf(</span><span class="s3">&quot;%d&quot;</span><span class="s1">, &amp;n); 
+    </span><span class="s4">for </span><span class="s1">(</span><span class="s4">int </span><span class="s1">i = </span><span class="s5">0</span><span class="s1">; i &lt; n; i++) scanf(</span><span class="s3">&quot;%d&quot;</span><span class="s1">, &amp;p[i]); 
+    sort(p, p + n); 
+    </span><span class="s4">do </span><span class="s1">{ 
+        </span><span class="s4">for </span><span class="s1">(</span><span class="s4">int </span><span class="s1">i = </span><span class="s5">0</span><span class="s1">; i &lt; n; i++) printf(</span><span class="s3">&quot;%d &quot;</span><span class="s1">, p[i]); 
+        printf(</span><span class="s3">&quot;</span><span class="s4">\n</span><span class="s3">&quot;</span><span class="s1">); 
+    } </span><span class="s4">while </span><span class="s1">(next_permutation(p, p + n)); 
+    </span><span class="s4">return </span><span class="s5">0</span><span class="s1">; 
+} 
+ 
+ 
+</span><span class="s4">void </span><span class="s1">print_subset(</span><span class="s4">int </span><span class="s1">n, </span><span class="s4">int </span><span class="s1">*B, </span><span class="s4">int </span><span class="s1">cur) { 
+</span><span class="s0">//       //</span><span class="s1"> 
+    </span><span class="s4">if </span><span class="s1">(cur == n) { 
+        </span><span class="s4">for </span><span class="s1">(</span><span class="s4">int </span><span class="s1">i = </span><span class="s5">0</span><span class="s1">; i &lt; cur; i++) 
+            </span><span class="s4">if </span><span class="s1">(B[i]) printf(</span><span class="s3">&quot;%d &quot;</span><span class="s1">, i); 
+        printf(</span><span class="s3">&quot;</span><span class="s4">\n</span><span class="s3">&quot;</span><span class="s1">); 
+        </span><span class="s4">return</span><span class="s1">; 
+    } 
+    B[cur] = </span><span class="s5">1</span><span class="s1">; 
+    print_subset(n, B, cur + </span><span class="s5">1</span><span class="s1">); 
+    B[cur] = </span><span class="s5">0</span><span class="s1">; 
+    print_subset(n, B, cur + </span><span class="s5">1</span><span class="s1">); 
+} 
+ 
+ 
+八皇后 
+</span><span class="s4">void </span><span class="s1">search(</span><span class="s4">int </span><span class="s1">cur) { 
+    </span><span class="s4">if </span><span class="s1">(cur == n) tot++; 
+    </span><span class="s4">else</span><span class="s1"> 
+        </span><span class="s4">for </span><span class="s1">(</span><span class="s4">int </span><span class="s1">i = </span><span class="s5">0</span><span class="s1">; i &lt; n; i++) { 
+            </span><span class="s4">if </span><span class="s1">(!vis[</span><span class="s5">0</span><span class="s1">][i] &amp;&amp; !vis[</span><span class="s5">1</span><span class="s1">][cur + i] &amp;&amp; !vis[</span><span class="s5">2</span><span class="s1">][cur - i + n]) { </span><span class="s0">//</span><span class="s1"> 
+                C[cur] = i; 
+                vis[</span><span class="s5">0</span><span class="s1">][i] = vis[</span><span class="s5">1</span><span class="s1">][cur + i] = vis[</span><span class="s5">2</span><span class="s1">][cur - i + n] = </span><span class="s5">1</span><span class="s1">; 
+                search(cur + </span><span class="s5">1</span><span class="s1">); 
+                vis[</span><span class="s5">0</span><span class="s1">][i] = vis[</span><span class="s5">1</span><span class="s1">][cur + i] = vis[</span><span class="s5">2</span><span class="s1">][cur - i + n] = </span><span class="s5">0</span><span class="s1">; 
+            } 
+        } 
+} 
+ 
+</span><span class="s4">const int </span><span class="s1">dx[ ] = {-</span><span class="s5">1</span><span class="s1">, </span><span class="s5">1</span><span class="s1">, </span><span class="s5">0</span><span class="s1">, </span><span class="s5">0</span><span class="s1">}; </span><span class="s4">const int </span><span class="s1">dy[ ] = {</span><span class="s5">0</span><span class="s1">, </span><span class="s5">0</span><span class="s1">, -</span><span class="s5">1</span><span class="s1">, </span><span class="s5">1</span><span class="s1">}; </span><span class="s0">//BFS        st</span><span class="s1"> 
+</span><span class="s4">int </span><span class="s1">bfs( ) { 
+    init_lookup_table( ); </span><span class="s4">int </span><span class="s1">front = </span><span class="s5">1</span><span class="s1">, rear = </span><span class="s5">2</span><span class="s1">; </span><span class="s4">while</span><span class="s1">(front &lt; rear) { 
+        State&amp; s = st[front]; 
+        </span><span class="s4">if</span><span class="s1">(memcmp(goal, s, </span><span class="s4">sizeof</span><span class="s1">(s)) == </span><span class="s5">0</span><span class="s1">) </span><span class="s4">return </span><span class="s1">front;</span><span class="s0">//            int z;</span><span class="s1"> 
+        </span><span class="s4">for</span><span class="s1">(z = </span><span class="s5">0</span><span class="s1">; z &lt; </span><span class="s5">9</span><span class="s1">; z++) </span><span class="s4">if</span><span class="s1">(!s[z]) </span><span class="s4">break</span><span class="s1">; 
+        </span><span class="s4">int </span><span class="s1">x = z/</span><span class="s5">3</span><span class="s1">, y = z%</span><span class="s5">3</span><span class="s1">; 
+        </span><span class="s4">for</span><span class="s1">(</span><span class="s4">int </span><span class="s1">d = </span><span class="s5">0</span><span class="s1">; d &lt; </span><span class="s5">4</span><span class="s1">; d++) { 
+            </span><span class="s4">int </span><span class="s1">newx = x + dx[d]; 
+            </span><span class="s4">int </span><span class="s1">newy = y + dy[d]; 
+            </span><span class="s4">int </span><span class="s1">newz = newx * </span><span class="s5">3 </span><span class="s1">+ newy; 
+            </span><span class="s4">if</span><span class="s1">(newx&gt;=</span><span class="s5">0</span><span class="s1">&amp;&amp;newx&lt;</span><span class="s5">3</span><span class="s1">&amp;&amp;newy&gt;=</span><span class="s5">0</span><span class="s1">&amp;&amp;newy&lt;</span><span class="s5">3</span><span class="s1">){ </span><span class="s0">//</span><span class="s1"> 
+                State&amp; t = st[rear]; 
+                memcpy(&amp;t, &amp;s, </span><span class="s4">sizeof</span><span class="s1">(s)); 
+                t[newz] = s[z]; 
+                t[z] = s[newz]; 
+                dist[rear] = dist[front] + </span><span class="s5">1</span><span class="s1">; 
+                </span><span class="s4">if</span><span class="s1">(try_to_insert(rear)) rear++; 
+ 
+            } } 
+        front++; </span><span class="s0">//             }</span><span class="s1"> 
+        </span><span class="s4">return </span><span class="s5">0</span><span class="s1">; </span><span class="s0">//</span><span class="s1"> 
+} 
+        </span><span class="s4">int </span><span class="s1">main( ){ 
+            </span><span class="s4">for</span><span class="s1">(</span><span class="s4">int </span><span class="s1">i = </span><span class="s5">0</span><span class="s1">; i &lt; </span><span class="s5">9</span><span class="s1">; i++) scanf(</span><span class="s3">&quot;%d&quot;</span><span class="s1">, &amp;st[</span><span class="s5">1</span><span class="s1">][i]); </span><span class="s0">//</span><span class="s1"> 
+            </span><span class="s4">for</span><span class="s1">(</span><span class="s4">int </span><span class="s1">i = </span><span class="s5">0</span><span class="s1">; i &lt; </span><span class="s5">9</span><span class="s1">; i++) scanf(</span><span class="s3">&quot;%d&quot;</span><span class="s1">, &amp;goal[i]); </span><span class="s4">int </span><span class="s1">ans = bfs( ); 
+            </span><span class="s4">if</span><span class="s1">(ans &gt; </span><span class="s5">0</span><span class="s1">) printf(</span><span class="s3">&quot;%d</span><span class="s4">\n</span><span class="s3">&quot;</span><span class="s1">, dist[ans]); 
+            </span><span class="s4">else </span><span class="s1">printf(</span><span class="s3">&quot;-1</span><span class="s4">\n</span><span class="s3">&quot;</span><span class="s1">); 
+            </span><span class="s4">return </span><span class="s5">0</span><span class="s1">; } 
+</span><span class="s0">//     //</span></pre>
+</body>
+</html>
