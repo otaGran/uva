@@ -77,6 +77,8 @@ void slove(int a, int b, int c, int d) {
             return;
         }
         d--;
+
+        
     }
 
 
