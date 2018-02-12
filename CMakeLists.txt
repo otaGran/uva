@@ -128,5 +128,6 @@ add_executable(8.2.1_Onlogn_Counting_Inversions AOAPC/8.2.1_Onlogn_Counting_Inve
 add_executable(8.1.3_Onlogn_Divide_And_Conquer_maxsum AOAPC/8.1.3_Onlogn_Divide_And_Conquer_maxsum.cpp)
 add_executable(8.1.3_On_maxsum AOAPC/8.1.3_On_maxsum.cpp)
 add_executable(6.4.4_Eulerian_path AOAPC/6.4.4_Eulerian_path.cpp)
-add_executable(6.4.3_topological_sort AOAPC/6.4.3_topological_sort.cpp AOAPC/8.2.3_Onlogn_bsearch.cpp)
+add_executable(6.4.3_topological_sort AOAPC/6.4.3_topological_sort.cpp AOAPC/8.2.3_Ologn_bsearch.cpp)
 add_executable(8.2.2_Onlogn_QuickSort AOAPC/8.2.2_Onlogn_QuickSort.cpp)
+add_executable(8.2.3_Onlogn_bsearch AOAPC/8.2.3_Ologn_bsearch.cpp)
