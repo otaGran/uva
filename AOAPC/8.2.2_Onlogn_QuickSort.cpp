@@ -18,7 +18,7 @@ int parition(int* A, int lo,int hi){
     return i+1;
 }
 void quickSort(int* A, int lo, int hi){
-    if(lo < hi){
+    if(lo <hi){
         int p = parition(A, lo, hi);
         quickSort(A, lo, p-1);
         quickSort(A, p, hi);
