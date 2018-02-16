@@ -1,6 +1,6 @@
 //
 // Created by beans_pc on 2/16/2018.
-//bsearch + greedy
+//bsearch找结果 + greedy输出最优分割方式
 #include <iostream>
 #include <vector>
 #include <sstream>
