@@ -25,6 +25,7 @@ void re_slove(int A[100][100],int sx, int sy, int k){
 
     }
 
+
 }
 
 void slove(int k){
