@@ -1,6 +1,6 @@
 //
 // Created by beans_pc on 2/16/2018.
-//
+//bsearch + greedy
 #include <iostream>
 #include <vector>
 #include <sstream>
